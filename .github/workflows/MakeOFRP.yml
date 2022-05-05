@@ -82,7 +82,11 @@ jobs:
         cd workspace
         repo sync -j$(nproc --all) -f --force-sync
         ls -al
-      
+    - name: Clone theme 
+      run: |
+        PATH=~/bin:$PATH
+        cd ${{ steps.pwd.outputs.pwd }}
+        git clone https://gitlab.com/OrangeFox/misc/theme.git bootable/recovery/gui/theme
     - name: Clone device tree
       run: |
         PATH=~/bin:$PATH
